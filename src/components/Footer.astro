@@ -1,12 +1,14 @@
 ---
+// src/components/Footer.astro
 import { Image } from "astro:assets";
 import logoRvoe from "../assets/images/logo-rvoe.svg";
 import logoSep from "../assets/images/logo-sep.svg";
 import { socialLinks, legalLink } from "../data/site";
+import Banner from "./Banner.astro";
 ---
 
 <footer class="fixed inset-x-0 bottom-0 -z-10 bg-black text-white" data-footer>
-
+ <Banner />
   <div class="mx-auto max-w-[1740px] px-6 py-2 md:px-12 lg:px-20">
     <div class="mt-20 mb-5 flex flex-wrap items-center justify-between gap-8 md:mt-40">
       <div class="flex items-center gap-6">

@@ -16,5 +16,7 @@ function init() {
 }
 
 init();
+window.addEventListener("resize", init);
+document.addEventListener("astro:after-swap",init); // 
 // Solo se dispara si usas <ClientRouter />; si no, es inofensivo.
 document.addEventListener("astro:page-load", init);
