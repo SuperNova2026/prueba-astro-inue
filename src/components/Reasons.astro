@@ -1,0 +1,38 @@
+---
+import { reasons } from "../data/reasons";
+import { GraduationCap, Handshake, FileBadge, ShieldCheck, LibraryBig } from "@lucide/astro";
+
+const icons = {
+	"graduation-cap": GraduationCap,
+	"handshake": Handshake,
+	"file-badge": FileBadge,
+	"shield-check": ShieldCheck,
+	"library-big": LibraryBig,
+} as const;
+---
+
+<section class=" bg-white my-10 lg:my-15">
+	<div class="border-black p-6 md:p-10 lg:px-12 lg:py-14">
+		<h2
+			class="font-bold text-3xl leading-tight uppercase text-black
+			md:text-5xl md:leading-[1.05] lg:text-7xl lg:leading-24"
+		>
+			Educación de calidad sin sacrificar tu estilo de vida
+		</h2>
+	</div>
+
+	<div class="grid grid-cols-2 p-3 md:p-5 lg:grid-cols-5">
+	{
+		reasons.map((reason) => {
+			const Icon = icons[reason.icon];
+			return (
+				<div class="flex h-65 flex-col justify-between border-black p-5 md:h-105 md:p-10 border-l">
+					<span class="font-sans text-xl md:text-[28px]">{reason.number}</span>
+					<Icon aria-hidden="true" class="mx-auto h-16 w-16 stroke-[0.7px] md:h-24 md:w-24 lg:h-26 lg:w-26"/>
+					<p class="min-h-16 font-sans text-base md:min-h-24 md:text-xl">{reason.text}</p>
+				</div>
+			);
+		})
+	}
+	</div>
+</section>
