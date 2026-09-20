@@ -3,34 +3,33 @@ import { Image } from 'astro:assets';
 import trustImage from '../assets/images/trust.webp';
 ---
 
-<section class="flex flex-col lg:min-h-150 lg:flex-row">
-    <!-- Panel de texto: ancho fijo en pg -->
+<section class="flex flex-col lg:min-h-200 lg:flex-row">
     <div
         class="flex flex-col justify-between gap-10 bg-brand p-6 text-black
-               lg:w-136 lg:shrink-0 lg:bg-black lg:p-12 lg:text-white"
+		md:p-14 lg:w-2/5 lg:shrink-0 lg:bg-black lg:p-[3vw] lg:text-white"
     >
         <div>
-            <p class="text-sm font-semibold text-black lg:text-white">INUE Universidad</p>
-            <h2 class="mt-2 text-3xl font-extrabold uppercase text-black lg:text-5xl lg:text-brand">
-                Educación para una vida en movimiento
+            <p class="font-light lg:text-white">INUE Universidad</p>
+            <h2
+                class="mt-2 text-3xl font-bold uppercase leading-tight text-black
+				md:mt-6 lg:text-[3vw] lg:whitespace-nowrap lg:text-brand"
+            >
+                <span class="lg:block"> Educación para una </span> <span class="lg:block"> vida en movimiento </span>
             </h2>
         </div>
 
         <div>
-            <p class="text-base text-black lg:text-lg lg:text-white">
-                Con más de
-                <span class=" lg:text-brand">30 años</span>
+            <p class="text-base font-lightlg:text-lg lg:text-white">
+                Con más de <span class="lg:text-brand"> 30 años </span>
                 formando profesionistas preparados para un mundo en constante cambio: con
                 habilidades digitales sólidas, pensamiento estratégico, capacidad de análisis
-                y creatividad para
-                <span class=" lg:text-brand">transformar</span>
+                y creatividad para <span class="lg:text-brand"> transformar </span>
                 obstáculos en oportunidades.
             </p>
         </div>
     </div>
 
-    <!-- Contenedor de imagen: ocupa el espacio restante en pg -->
-    <div class="relative lg:min-w-0 lg:flex-1">
+    <div class="relative lg:w-3/5">
         <Image
             src={trustImage}
             alt="Graduacion en INUE Universidad"
