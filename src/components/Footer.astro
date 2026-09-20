@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import logoRvoe from "../assets/images/logo-rvoe.svg";
 import logoSep from "../assets/images/logo-sep.svg";
-import { socialLinks, legalLink } from "../data/site.ts";
+import { socialLinks, legalLink } from "../data/links.ts";
 import Banner from "./Banner.astro";
 ---
 
@@ -19,7 +19,7 @@ import Banner from "./Banner.astro";
 			<ul class="flex flex-wrap items-center gap-6 font-heading text-xl tracking-widest md:gap-10 md:text-3xl">
 			{socialLinks.map(({ label, href }) => (
 				<li>
-				<a href={href} class="hover:underline focus-visible:underline">{label}</a>
+				<a href={href} class="hover:underline uppercase focus-visible:underline">{label}</a>
 				</li>
 			))}
 			</ul>

@@ -1,13 +1,18 @@
-<div class="mx-auto max-w-[1740px] px-6 py-2 md:px-12 lg:px-20">
-	<h2 class="mx-auto mt-40 w-full text-center font-heading text-[clamp(2.5rem,7vw,96px)] leading-[1.05] uppercase">
-		Formando profesionales desde 1993
-	</h2>
+---
+import { enrollLink } from "../data/links";
+---
 
-	<div class="mt-7 flex justify-center">
-		<a href="#"
-		class="rounded-full border border-black bg-yellow px-12 py-6 font-heading text-3xl tracking-wider whitespace-nowrap text-black"
-		>
-			Inscribirme ahora
-		</a>
-	</div>
+<div class="mx-auto max-h-100 max-w-[1740px] px-6 py-2 md:px-12 lg:px-20 uppercase">
+    <h2 class="mx-auto mt-25 w-full text-center font-heading text-[clamp(2.5rem,7vw,96px)] leading-[1.05]">
+        Formando profesionales desde 1993
+    </h2>
+
+    <div class="mt-7 flex justify-center">
+        <a
+            href={enrollLink.href}
+            class="rounded-full border border-black bg-yellow px-12 py-6 font-heading text-3xl tracking-wider whitespace-nowrap text-black "
+        >
+            {enrollLink.label}
+        </a>
+    </div>
 </div>
