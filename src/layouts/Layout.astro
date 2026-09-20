@@ -1,27 +1,24 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
-
 ---
 
 <!doctype html>
 <html lang="es-MX">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  </head>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+			<meta name="generator" content={Astro.generator} />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+	</head>
 
-  <body class="m-0 w-full h-full"
-        class="isolate bg-white font-sans text-black antialiased">
-    <!-- El main DEBE tener fondo opaco: es lo que "tapa" el footer fijo.
-         Su margen inferior deja el hueco por donde se descubre el footer. -->
-    <main class="relative bg-white mb-[var(--footer-height,0px)]">
-      <slot />
-    </main>
+	<body class="m-0 w-full h-full"
+			class="isolate bg-white font-sans text-black antialiased">
+		<main class="relative bg-white mb-(--footer-height,0px)">
+		<slot />
+		</main>
 
-    <Footer />
-  </body>
+		<Footer />
+	</body>
 </html>
