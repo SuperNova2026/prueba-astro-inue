@@ -1,7 +1,7 @@
 ---
-import BlogCard from "./BlogCard.astro";
-import { getLatestPosts } from "../data/blog.ts";
-import { blogIndexLink } from "../data/links.ts";
+import BlogCard from "../blog/BlogCard.astro";
+import { getLatestPosts } from "../../data/blog.ts";
+import { blogIndexLink } from "../../data/links.ts";
 
 const posts = getLatestPosts(3);
 ---
