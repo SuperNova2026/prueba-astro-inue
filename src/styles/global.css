@@ -2,6 +2,10 @@
 
 @theme {
   --color-yellow: #FDE006; 
-  --font-heading: "Montserrat", Impact, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-sans: "Manrope", sans-serif;
 }
+
+/* ------------------------------------------------------------------ */
+/* Forms.                                                               */
+/* ------------------------------------------------------------------ */

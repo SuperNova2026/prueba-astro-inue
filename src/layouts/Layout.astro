@@ -5,13 +5,26 @@ import Footer from "../components/Footer.astro";
 
 <!doctype html>
 <html lang="es-MX">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-			<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-			<meta name="generator" content={Astro.generator} />
-		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-	</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200..800&display=swap"
+            media="print"
+            onload="this.media='all'"
+        /><noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200..800&display=swap"
+            />
+        </noscript>
+        <meta name="generator" content={Astro.generator} />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    </head>
 
 	<body class="isolate m-0 h-full w-full bg-white font-sans text-black antialiased">
 
@@ -19,6 +32,6 @@ import Footer from "../components/Footer.astro";
 			<slot />
 		</main>
 
-		<Footer />
-	</body>
+        <Footer />
+    </body>
 </html>
