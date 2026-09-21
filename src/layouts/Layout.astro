@@ -21,13 +21,11 @@ import Footer from "../components/Footer.astro";
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     </head>
 
-    <body
-        class="m-0 w-full h-full"
-        class="isolate bg-white font-sans text-black antialiased"
-    >
-        <main class="relative bg-white mb-(--footer-height,0px)">
-            <slot />
-        </main>
+	<body class="isolate m-0 h-full w-full bg-white font-sans text-black antialiased">
+
+		<main class="relative bg-white mb-(--footer-height,0px)">
+			<slot />
+		</main>
 
         <Footer />
     </body>
