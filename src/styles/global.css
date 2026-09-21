@@ -14,6 +14,22 @@
   }
 }
 
+:root {
+  --header-height: 91px;
+}
+layer base {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: ultra-smooth;
+    }
+  }
+}
+
+
 [data-footer] {
   opacity: var(--footer-progress, 1);
   translate: 0 calc((1 - var(--footer-progress, 1)) * 25%);
