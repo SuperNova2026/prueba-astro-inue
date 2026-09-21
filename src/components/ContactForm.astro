@@ -1,0 +1,133 @@
+---
+import Field from "./Field.astro";
+import SelectField from "./SelectField.astro";
+import {
+  countryOptions,
+  programOptions,
+  modalityOptions,
+  NAME_MIN_LENGTH,
+  emailPattern,
+  phonePattern,
+} from "../data/contact.ts";
+---
+
+<section id="contacto" aria-labelledby="contacto-title" class="bg-white">
+  <div class="mx-auto max-w-[1740px] px-6 py-12 md:px-12 md:py-20 lg:px-20">
+    <h2
+      id="contacto-title"
+      class="text-center font-heading text-[clamp(2rem,6vw,76px)] leading-[1.05] uppercase"
+    >
+      Da el primer paso
+    </h2>
+    <p
+      class="mx-auto mt-4 max-w-2xl text-center font-sans text-base md:text-xl"
+    >
+      Completa el formulario y un asesor te contactará para ayudarte a elegir el
+      programa ideal para ti.
+    </p>
+
+    <form
+      data-contact-form
+      novalidate
+      class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2"
+    >
+      <Field 
+        name="nombre" 
+        label="Nombre" 
+        autocomplete="given-name" 
+        minlength={NAME_MIN_LENGTH}
+        required 
+      />
+      <Field
+        name="apellido"
+        label="Apellido"
+        autocomplete="family-name"
+        minlength={NAME_MIN_LENGTH}
+        required
+      />
+      <Field
+        name="email"
+        type="email"
+        label="Correo electrónico"
+        autocomplete="email"
+        inputmode="email"
+        pattern={emailPattern}
+        required
+        class="md:col-span-2"
+      />
+
+      <div class="flex items-start gap-4 md:col-span-2">
+        <SelectField
+          name="pais"
+          label="País"
+          options={countryOptions}
+          class="w-28 shrink-0"
+        />
+        <Field
+          name="telefono"
+          type="tel"
+          label="Teléfono o WhatsApp"
+          autocomplete="tel-national"
+          inputmode="numeric"
+          pattern={phonePattern}
+          digitsOnly
+          required
+          class="min-w-0 flex-1"
+        />
+      </div>
+
+      <SelectField
+        name="programa"
+        label="Programa de interés"
+        placeholder="Programa de interés"
+        options={programOptions}
+        required
+      />
+      <SelectField
+        name="modalidad"
+        label="Modalidad de tu interés"
+        placeholder="Modalidad de tu interés"
+        options={modalityOptions}
+        required
+      />
+
+      <Field
+        name="mensaje"
+        label="Mensaje (opcional)"
+        multiline
+        rows={2}
+        maxlength={1000}
+        class="md:col-span-2"
+      />
+
+      <div
+        data-message
+        data-state="idle"
+        role="status"
+        aria-live="polite"
+        class="p-4 font-sans text-base data-[state=error]:bg-red-100 data-[state=error]:text-red-800 data-[state=idle]:hidden data-[state=success]:bg-black data-[state=success]:text-center data-[state=success]:text-white md:col-span-2"
+      >
+        <p data-message-text class="font-medium"></p>
+        <ul
+          data-message-list
+          class="mt-2 list-disc space-y-1 pl-5 empty:hidden [&_button]:cursor-pointer [&_button]:text-left [&_button]:underline"
+        >
+        </ul>
+      </div>
+
+      <div class="mt-8 flex justify-end md:col-span-2">
+        <button
+          data-submit
+          type="submit"
+          class="cursor-pointer rounded-full border border-black bg-white px-8 py-4 font-heading text-xl tracking-wider uppercase focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-60 md:px-12 md:py-5 md:text-3xl"
+        >
+          <span data-submit-label>Enviar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  import "../scripts/contact-form.ts";
+</script>
