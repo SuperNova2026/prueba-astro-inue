@@ -1,6 +1,6 @@
 ---
-import Field from "./Field.astro";
-import SelectField from "./SelectField.astro";
+import Field from "../form/Field.astro";
+import SelectField from "../form/SelectField.astro";
 import {
   countryOptions,
   programOptions,
@@ -8,7 +8,7 @@ import {
   NAME_MIN_LENGTH,
   emailPattern,
   phonePattern,
-} from "../data/contact.ts";
+} from "../../data/contact.ts";
 ---
 
 <section id="contacto" aria-labelledby="contacto-title" class="bg-white">
@@ -129,5 +129,5 @@ import {
 </section>
 
 <script>
-  import "../scripts/contact-form.ts";
+  import "../../scripts/contact-form.ts";
 </script>
