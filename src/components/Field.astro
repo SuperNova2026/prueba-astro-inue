@@ -1,0 +1,88 @@
+---
+import FieldError from "./FieldError.astro";
+import { fieldClasses } from "../data/fieldStyles.ts";
+
+interface Props {
+  name: string;
+  label: string;
+  type?: "text" | "email" | "tel";
+  multiline?: boolean;
+  rows?: number;
+  required?: boolean;
+  autocomplete?: string;
+  pattern?: string;
+  inputmode?: "text" | "numeric" | "tel" | "email";
+  maxlength?: number;
+  minlength?: number;
+  digitsOnly?: boolean;
+  hint?: string; 
+  class?: string;
+}
+
+const {
+  name,
+  label,
+  type = "text",
+  multiline = false,
+  rows = 2,
+  required = false,
+  autocomplete,
+  pattern,
+  inputmode,
+  maxlength,
+  minlength,
+  digitsOnly = false,
+  hint,
+  class: className,
+} = Astro.props;
+
+const errorId = `error-${name}`;
+const hintId = `hint-${name}`;
+const describedBy = hint ? `${hintId} ${errorId}` : errorId;
+---
+
+<div data-field class:list={["group", className]}>
+  {
+    multiline ? (
+      <textarea
+        name={name}
+        rows={rows}
+        placeholder={label}
+        aria-label={label}
+        aria-describedby={describedBy}
+        required={required}
+        maxlength={maxlength}
+        minlength={minlength}
+        class={fieldClasses}
+      />
+    ) : (
+      <input
+        type={type}
+        name={name}
+        placeholder={label}
+        aria-label={label}
+        aria-describedby={describedBy}
+        autocomplete={autocomplete}
+        required={required}
+        pattern={pattern}
+        inputmode={inputmode}
+        maxlength={maxlength}
+        minlength={minlength}
+        data-digits-only={digitsOnly ? "" : undefined}
+        class={fieldClasses}
+      />
+    )
+  }
+
+  {
+    hint && (
+      <p
+        id={hintId}
+        class="mt-2 font-sans text-sm text-black/60 group-has-[[aria-invalid=true]]:hidden md:text-base"
+      >
+        {hint}
+      </p>
+    )
+  }
+  <FieldError id={errorId} />
+</div>
