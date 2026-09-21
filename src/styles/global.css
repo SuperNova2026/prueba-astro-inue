@@ -1,44 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-yellow: #FDE006; 
-  --font-heading: "Bebas Neue", sans-serif;
-  --font-sans: "Manrope", sans-serif;
-}
-
-@utility scrollbar-none {
-  scrollbar-width: none; 
-
-  &::-webkit-scrollbar {
-    display: none; 
-  }
+	--color-yellow: #FDE006; 
+	--font-heading: "Bebas Neue", sans-serif;
+	--font-sans: "Manrope", sans-serif;
 }
 
 :root {
-  --header-height: 91px;
+	--header-height: 91px;
 }
-layer base {
-  html {
-    scroll-padding-top: var(--header-height);
-  }
 
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: ultra-smooth;
-    }
-  }
+@utility scrollbar-none {
+	scrollbar-width: none; 
+
+	&::-webkit-scrollbar {
+		display: none; 
+	}
+}
+
+layer base {
+	html {
+		scroll-padding-top: var(--header-height);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+		scroll-behavior: ultra-smooth;
+		}
+	}
 }
 
 
 [data-footer] {
-  opacity: var(--footer-progress, 1);
-  translate: 0 calc((1 - var(--footer-progress, 1)) * 25%);
-  will-change: opacity, translate;
+	opacity: var(--footer-progress, 1);
+	translate: 0 calc((1 - var(--footer-progress, 1)) * 25%);
+	will-change: opacity, translate;
 }
 
 
 @media (prefers-reduced-motion: reduce) {
-  [data-footer] {
-    translate: none;
-  }
+	[data-footer] {
+		translate: none;
+	}
 }
