@@ -5,3 +5,19 @@
   --font-heading: "Bebas Neue", sans-serif;
   --font-sans: "Manrope", sans-serif;
 }
+
+:root {
+  --header-height: 91px;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}

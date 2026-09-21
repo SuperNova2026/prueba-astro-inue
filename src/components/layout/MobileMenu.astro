@@ -1,0 +1,93 @@
+---
+import Icon from "../iu/Icon.astro"; // ← cambia por el import de tu librería de íconos
+import { contactLink, linkAttrs, portalLink, primaryNav, programGroups } from "../../data/navigation";
+---
+
+<div
+  id="mobile-menu"
+  data-mobile-menu
+  hidden
+  class="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-var(--header-height))] overflow-y-auto bg-white text-black lg:hidden"
+>
+  <nav aria-label="Menú móvil">
+    <ul class="flex flex-col font-heading text-3xl">
+      <li class="border-b border-black/15">
+        <details class="group">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden"
+          >
+            Programas
+            <Icon
+              name="chevron-down"
+              width={20}
+              height={20}
+              class="stroke-2 transition-transform group-open:rotate-180"
+            /> 
+          </summary>
+
+          <div class="border-t border-black/15 font-sans">
+            {
+              programGroups.map((group, i) => {
+                const titleId = `mobile-group-${i}`;
+                return (
+                  <div>
+                    <p
+                      id={titleId}
+                      class="bg-black/5 px-6 py-2 font-heading text-sm tracking-widest text-black/60"
+                    >
+                      {group.title}
+                    </p>
+                    <ul aria-labelledby={titleId}>
+                      {group.items.map((item) => (
+                        <li>
+                          <a
+                            href={item.href}
+                            {...linkAttrs(item)}
+                            class="block border-b border-black/10 px-8 py-4 text-xl"
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })
+            }
+          </div>
+        </details>
+      </li>
+      {
+  primaryNav.map((item) => (
+    <li class="border-b border-black/15">
+      <a
+        href={item.href}
+        {...linkAttrs(item)}
+        class="flex items-center justify-between gap-4 px-6 py-5"
+      >
+        {item.label}
+        {item.external && (
+        <Icon name="external-link" width={20} height={20} class="stroke-2" />
+        )}
+      </a>
+    </li>
+  ))
+}
+    </ul>
+  </nav>
+
+  <div class="flex flex-col gap-3 p-6">
+    <a
+      href={contactLink.href}
+      class="rounded-full border border-black bg-white px-5 py-4 text-center font-heading text-sm tracking-wider text-black"
+    >
+      {contactLink.label}
+    </a>
+    <a
+      href={portalLink.href}
+      class="rounded-full border border-black bg-black px-5 py-4 text-center font-heading text-sm tracking-wider text-white"
+    >
+      {portalLink.label}
+    </a>
+  </div>
+</div>
