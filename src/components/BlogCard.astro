@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import type { BlogPost } from "../data/blog.ts";
+
+interface Props {
+    post: BlogPost;
+}
+
+const { post } = Astro.props;
+const { href, cover, eyebrow, title, excerpt, date } = post;
+
+const dateLabel = date.toLocaleDateString("es-MX", {
+    dateStyle: "long",
+    timeZone: "UTC",
+});
+---
+
+<article
+    class="group relative flex h-full flex-col overflow-hidden rounded-md border border-white/15 bg-black transition-colors hover:border-white/40 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-yellow"
+>
+    <div class="aspect-16/10 overflow-hidden bg-neutral-800">
+        
+        <Image
+            src={cover}
+            alt=""
+            widths={[400, 640, 960]}
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            format="webp"
+            quality={75}
+            class="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105"
+        />
+    </div>
+
+    <div class="flex flex-1 flex-col p-5">
+        {
+            eyebrow && (
+                <p class="mb-2 font-heading text-xs tracking-wide text-yellow uppercase">
+                    {eyebrow}
+                </p>
+            )
+        }
+
+        <h3
+            class="font-sans text-lg leading-snug font-semibold text-white transition-colors group-hover:text-yellow"
+        >
+            <a
+                href={href}
+                class="after:absolute after:inset-0 focus-visible:outline-hidden"
+            >
+                {title}
+            </a>
+        </h3>
+
+        <p
+            class="mt-2 line-clamp-2 font-sans text-sm leading-relaxed text-white/70"
+        >
+            {excerpt}
+        </p>
+
+        <p class="mt-auto pt-4 font-sans text-xs text-white/50">
+            <time datetime={date.toISOString()}>{dateLabel}</time>
+        </p>
+    </div>
+</article>

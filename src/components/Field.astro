@@ -78,7 +78,7 @@ const describedBy = hint ? `${hintId} ${errorId}` : errorId;
     hint && (
       <p
         id={hintId}
-        class="mt-2 font-sans text-sm text-black/60 group-has-[[aria-invalid=true]]:hidden md:text-base"
+        class="mt-2 font-sans text-sm text-black/60 group-has-aria-invalid:hidden md:text-base"
       >
         {hint}
       </p>

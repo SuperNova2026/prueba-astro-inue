@@ -13,3 +13,5 @@ export const legalLink = { label: "Política de Privacidad", href: "#" } as cons
 export const enrollLink = { label: "Inscribirme ahora", href: "#" } as const;
 
 export const rvoeLink = { label: "Verificar RVOE", href: "#" } as const;
+
+export const blogIndexLink = { label: "Ver todo", href: "#" } as const;

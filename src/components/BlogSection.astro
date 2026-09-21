@@ -1,0 +1,39 @@
+---
+import BlogCard from "./BlogCard.astro";
+import { getLatestPosts } from "../data/blog.ts";
+import { blogIndexLink } from "../data/links.ts";
+
+const posts = getLatestPosts(3);
+---
+
+<section aria-labelledby="blog-title" class="bg-black text-white">
+    <div class="mx-auto max-w-[1740px] px-6 py-24 md:px-12 lg:px-20">
+        <div class="flex flex-wrap items-end justify-between gap-x-8 gap-y-6">
+            <h2
+                id="blog-title"
+                class="max-w-3xl font-heading text-[clamp(2rem,5vw,72px)] leading-[1.05] uppercase"
+            >
+                Conoce INUE a través de nuestro blog
+            </h2>
+
+            <a
+                href={blogIndexLink.href}
+                class="rounded-full border border-yellow px-6 py-3 font-heading text-lg tracking-wide whitespace-nowrap text-yellow transition hover:bg-yellow hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow"
+            >
+                {blogIndexLink.label}
+            </a>
+        </div>
+        <ul
+            role="list"
+            class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+            {
+                posts.map((post) => (
+                    <li>
+                        <BlogCard post={post} />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>
