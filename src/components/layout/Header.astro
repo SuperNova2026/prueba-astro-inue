@@ -1,95 +1,71 @@
 ---
 import { Image } from "astro:assets";
-import Icon from "../iu/Icon.astro"; // ← cambia por el import de tu librería de íconos
+import logoInue from "../../assets/images/logo-inue.svg";
+
 import MobileMenu from "./MobileMenu.astro";
 import ProgramsPanel from "./ProgramsPanel.astro";
-import logoInue from "../../assets/images/logo-inue.svg";
+
 import { contactLink, linkAttrs, portalLink, primaryNav } from "../../data/navigation";
 
-const navItem = "transition-colors hover:bg-yellow focus-visible:bg-yellow";
+import { ChevronDown, Menu, X } from "@lucide/astro";
 ---
 
 <header data-header class="sticky top-0 z-50 border-b border-black/10 bg-white">
-  <div
-    class="mx-auto flex h-(--header-height) max-w-[1740px] items-center justify-between px-6 md:px-12 lg:px-20"
-  >
-    <div class="flex items-center gap-10">
-      <a href="/" class="flex items-center">
-        <Image
-          src={logoInue}
-          alt="INUE Universidad, ir al inicio"
-          loading="eager"
-          class="h-12 w-auto"
-        />
-      </a>
+    <div class="mx-auto flex h-(--header-height) max-w-[1740px] items-center justify-between px-6 md:px-12 lg:px-20">
+        <div class="flex items-center gap-10">
+            <a href="/" class="flex items-center">
+                <Image src={logoInue} alt="INUE Universidad, ir al inicio" loading="eager" class="h-12 w-auto" />
+            </a>
 
-      <nav aria-label="Principal" class="hidden lg:block">
-        <ul class="flex items-center gap-8 font-heading text-2xl">
-          <li data-programs-root>
-            <button
-              type="button"
-              data-programs-trigger
-              aria-expanded="false"
-              aria-controls="programs-panel"
-              class:list={["group flex items-center gap-1", navItem]}
+            <nav aria-label="Principal" class="hidden md:block">
+                <ul class="flex items-center gap-8 font-heading text-2xl">
+                    <li data-programs-root>
+                        <button type="button" data-programs-trigger aria-expanded="false" aria-controls="programs-panel" class="group flex items-center gap-1 transition-colors hover:bg-yellow focus-visible:bg-yellow">
+                            Programas
+                            <ChevronDown width={14} height={14} class="stroke-2 transition-transform duration-300 group-aria-expanded:rotate-180" />
+                        </button>
+
+                        <ProgramsPanel />
+                    </li>
+
+                    {primaryNav.map((item) => (
+                        <li>
+                            <a href={item.href} {...linkAttrs(item)} class="transition-colors hover:bg-yellow focus-visible:bg-yellow">
+                                {item.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <a href={contactLink.href} class="hidden rounded-full border border-black bg-white px-5 py-3 font-heading text-sm tracking-wider text-black md:inline-flex">
+                {contactLink.label}
+            </a>
+            <a
+                href={portalLink.href}
+                class="group relative isolate hidden overflow-hidden rounded-full border border-black bg-black px-5 py-3 font-heading text-sm tracking-wider text-white group-hover:text-black group-focus-visible:text-black md:inline-flex"
             >
-              Programas
-              <Icon
-                name="chevron-down"
-                width={14}
-                height={14}
-                class="stroke-2 transition-transform duration-300 group-aria-expanded:rotate-180"
-              />
+                <span class="relative z-10 group-hover:text-black group-focus-visible:text-black">
+                    {portalLink.label}
+                </span>
+                <span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-1/2 z-0 size-64 -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full bg-yellow transition-transform duration-300 ease-out group-hover:scale-100 group-focus-visible:scale-100 motion-reduce:transition-none"
+                ></span>
+            </a>
+
+            <button type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú" class="group inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-black md:hidden">
+                <Menu width={22} height={22} class="stroke-2 group-aria-expanded:hidden" />
+                <X width={22} height={22} class="hidden stroke-2 group-aria-expanded:block" />
             </button>
-
-        
-            <ProgramsPanel />
-          </li>
-
-          {
-            primaryNav.map((item) => (
-              <li>
-                <a href={item.href} {...linkAttrs(item)} class={navItem}>
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
+        </div>
     </div>
 
-    <div class="flex items-center gap-3">
-      <a
-        href={contactLink.href}
-        class="hidden rounded-full border border-black bg-white px-5 py-3 font-heading text-sm tracking-wider text-black transition-colors hover:bg-yellow focus-visible:bg-yellow lg:inline-flex"
-      >
-        {contactLink.label}
-      </a>
-      <a
-        href={portalLink.href}
-        class="hidden rounded-full border border-black bg-black px-5 py-3 font-heading text-sm tracking-wider text-white transition-colors hover:bg-yellow hover:text-black focus-visible:bg-yellow focus-visible:text-black lg:inline-flex"
-      >
-        {portalLink.label}
-      </a>
-
-      <button
-        type="button"
-        data-mobile-toggle
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        aria-label="Menú"
-        class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-black lg:hidden"
-      >
-        <Icon name="menu" width={22} height={22} class="stroke-2 group-aria-expanded:hidden" />
-        <Icon name="x" width={22} height={22} class="hidden stroke-2 group-aria-expanded:block" />
-      </button>
-    </div>
-  </div>
-
-  <MobileMenu />
+    <MobileMenu />
 </header>
 
 <script>
-  import "../../scripts/header-menus";
+    import "../../scripts/header-menus";
 </script>

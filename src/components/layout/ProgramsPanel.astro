@@ -1,46 +1,30 @@
 ---
-import Icon from "../iu/Icon.astro"; // ← cambia por el import de tu librería de íconos
 import { linkAttrs, programGroups } from "../../data/navigation";
+
+import { ArrowRight } from "@lucide/astro";
 ---
 
-
-<div
-  id="programs-panel"
-  data-programs-panel
-  hidden
-  class="absolute inset-x-0 top-full z-40 border-b border-black/10 bg-white shadow-2xl"
->
-  <div class="grid grid-cols-3">
-    {
-      programGroups.map((group, i) => {
-        const titleId = `programs-group-${i}`;
-        return (
-          <div class:list={["p-9", i < programGroups.length - 1 && "border-r border-black/15"]}>
-            <p id={titleId} class="font-heading text-sm tracking-widest text-black/60">
-              {group.title}
-            </p>
-            <ul aria-labelledby={titleId} class="mt-5 flex flex-col gap-1">
-              {group.items.map((item) => (
-                <li>
-                  <a
-                    href={item.href}
-                    {...linkAttrs(item)}
-                    class="group -mx-3 flex items-center justify-between gap-4 px-3 py-3 font-sans text-2xl text-black transition-colors hover:bg-yellow focus-visible:bg-yellow"
-                  >
-                    {item.label}
-                    <Icon
-                      name="arrow-right"
-                      width={32}
-                      height={32}
-                      class="stroke-2 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-      })
-    }
-  </div>
+<div id="programs-panel" data-programs-panel hidden class="absolute inset-x-0 top-full z-40 border-b border-black/10 bg-white shadow-2xl">
+	<div class="grid grid-cols-3">
+		{programGroups.map((group, i) => {
+			const titleId = `programs-group-${i}`;
+			return (
+				<div class:list={["p-9", i < programGroups.length - 1 && "border-r border-black/15"]}>
+					<p id={titleId} class="font-heading text-sm tracking-widest text-black/60">
+						{group.title}
+					</p>
+					<ul aria-labelledby={titleId} class="mt-5 flex flex-col gap-1">
+						{group.items.map((item) => (
+							<li>
+								<a href={item.href} {...linkAttrs(item)} class="group -mx-3 flex items-center justify-between gap-4 px-3 py-3 font-sans text-2xl text-black transition-colors hover:bg-yellow focus-visible:bg-yellow">
+									{item.label}
+									<ArrowRight width={32} height={32} class="stroke-2 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1" />
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			);
+		})}
+	</div>
 </div>
