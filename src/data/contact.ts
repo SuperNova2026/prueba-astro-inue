@@ -21,7 +21,7 @@ export const examples = {
   telefono: "6461234567",
 } as const;
 
-// Validaciones de campos de contacto. Se usan en el atributo pattern de los inputs.
+// Validaciones de campos de contacto
 export const NAME_MIN_LENGTH = 2;
 export const PHONE_DIGITS = 10;
 export const phonePattern = `[0-9]{${PHONE_DIGITS}}`;

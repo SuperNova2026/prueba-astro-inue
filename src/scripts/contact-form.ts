@@ -16,11 +16,10 @@ const TEXT = {
   failure: "No pudimos enviar tu mensaje. Inténtalo de nuevo.",
 } as const;
 
-//const summaryTitle = (count: number) =>
- // count === 1 ? "Hay 1 campo por corregir:" : `Hay ${count} campos por corregir:`;
+const summaryTitle = (count: number) =>
+  count === 1 ? "Hay 1 campo por corregir:" : `Hay ${count} campos por corregir:`;
 
-// --- Cuadro general -----------------------------------------------------------
-
+// Cuadro general 
 function showMessage(box: HTMLElement, state: MessageState, text = "", problems: Problem[] = []) {
   const title = box.querySelector<HTMLElement>("[data-message-text]");
   const list = box.querySelector<HTMLElement>("[data-message-list]");
@@ -40,6 +39,7 @@ function showMessage(box: HTMLElement, state: MessageState, text = "", problems:
   box.dataset.state = state;
 }
 
+// Errores por campo
 function setFieldError(field: FormField, message: string) {
   const error = field.closest("[data-field]")?.querySelector<HTMLElement>("[data-error]");
   const hasError = message !== "";
@@ -56,6 +56,7 @@ function validateField(field: FormField) {
 }
 
 function getFields(form: HTMLFormElement): FormField[] {
+  // willValidate excluye botones y campos deshabilitados.
   return Array.from(form.elements).filter(
     (el): el is FormField => isFormField(el) && el.willValidate
   );
@@ -68,7 +69,19 @@ function collectProblems(fields: FormField[]): Problem[] {
   });
 }
 
-// Simula el envío del formulario.
+function refreshSummary(form: HTMLFormElement, box: HTMLElement) {
+  const list = box.querySelector("[data-message-list]");
+  if (!list || list.childElementCount === 0) return;
+
+  const problems = collectProblems(getFields(form));
+  if (problems.length === 0) {
+    showMessage(box, "idle");
+  } else {
+    showMessage(box, "error", summaryTitle(problems.length), problems);
+  }
+}
+
+// Envío 
 async function sendForm(_data: FormData): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, 500));
 }
@@ -100,6 +113,7 @@ function initContactForm() {
 
     if (field.getAttribute("aria-invalid") === "true") {
       validateField(field);
+      refreshSummary(form, message);
     }
   });
 
@@ -111,7 +125,7 @@ function initContactForm() {
     const hadError = field.getAttribute("aria-invalid") === "true";
     if (field.value !== "" || attempted || hadError) {
       validateField(field);
-      // refreshSummary(form, message);
+      refreshSummary(form, message);
     }
   });
 
@@ -121,6 +135,7 @@ function initContactForm() {
     const target = form.elements.namedItem(button.dataset.target ?? "");
     if (target instanceof HTMLElement) target.focus();
   });
+
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -137,6 +152,7 @@ function initContactForm() {
     }
 
     if (problems.length > 0) {
+      showMessage(message, "error", summaryTitle(problems.length), problems);
       problems[0].field.focus();
       return;
     }
