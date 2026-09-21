@@ -18,7 +18,7 @@ import { Plus } from "@lucide/astro";
 
             <div class="mt-6 divide-y divide-black border-y border-black md:mt-10">
                 {faqList.map((item, i) => (
-                    <details class="group/faq faq-item" name="usecases" open={i === 0}>
+                    <details class="group/faq faq-item" name="faq" open={i === 0}>
                         <summary class="group/summary usecase-summary relative isolate flex cursor-pointer list-none items-center justify-between gap-4 overflow-hidden bg-white px-6 py-5 font-sans text-base transition-colors duration-300 hover:text-white group-open/faq:bg-yellow group-open/faq:font-medium group-open/faq:transition-none group-open/faq:hover:text-black md:gap-6 md:px-10 md:py-7 md:text-2xl lg:px-12">
                             <span class="relative z-10">{item.question}</span>
 
