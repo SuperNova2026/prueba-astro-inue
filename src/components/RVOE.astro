@@ -10,34 +10,34 @@ import { SquareArrowOutUpRight } from "@lucide/astro";
 
 <section class="flex flex-col lg:min-h-10 lg:flex-row">
     <div
-        class="relative isolate flex flex-col gap-10 bg-yellow p-6 text-black
-               transition-colors duration-500 ease-in-out
-             has-[a:hover]:text-white overflow-hidden lg:w-3/5 lg:p-12"
+    class="relative isolate flex flex-col gap-10 p-10 bg-yellow text-black
+          transition-colors duration-500 ease-in-out
+         has-[a:hover]:text-white overflow-hidden lg:w-3/5"
     >
         <div class="flex flex-col gap-6">
             <h2 class="max-w-3xl text-[clamp(2rem,4.5vw,64px)] font-heading leading-tight uppercase">
                 Validez oficial ante la SEP
             </h2>
-            <div class="flex flex-col gap-4 font-sans text-xl">
+            <div class="flex flex-col gap-4 font-sans text-sm md:text-2xl md:pr-25">
                 <p>El RVOE es la autorización oficial de la SEP que garantiza que al graduarte en INUE obtendrás tu título con validez oficial, sin importar la modalidad que elijas.</p>
                 <p>Estudia con la tranquilidad de que cada hora de esfuerzo se convierte en un título que el mundo reconoce.</p>
             </div>
         </div>
 
         <div class="mt-auto flex flex-wrap items-end justify-between gap-x-6 gap-y-6">
-            <div class="flex shrink-0 items-center gap-2">
-                <LogoRVOE class="h-14 w-auto" aria-label="Logo RVOE" role="img" />
-                <LogoSEP class="h-14 w-auto" aria-label="Logo SEP" role="img" />
+            <div class="flex shrink-0 items-center gap-6 h-15">
+                <LogoRVOE class="h-10 md:h-15 w-auto" aria-label="Logo RVOE" role="img" />
+                <LogoSEP class="h-10 md:h-15 w-auto" aria-label="Logo SEP" role="img" />
             </div>
 
             <a
             href="#"
             class="group relative ml-auto inline-flex shrink-0 items-center gap-2 rounded-full
                    border border-black bg-black px-6 py-4
-                   font-heading text-sm text-yellow uppercase"
+                   font-heading text-base text-yellow uppercase"
             >
                 Verificar RVOE
-                <SquareArrowOutUpRight aria-hidden="true" class="h-5 w-5 stroke-[1px]" />
+                <SquareArrowOutUpRight aria-hidden="true" class="h-5 w-5 stroke-[1.7px]" />
                 <span
                     aria-hidden="true"
                     class="pointer-events-none absolute top-1/2 left-1/2 -z-10
