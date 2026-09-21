@@ -1,5 +1,5 @@
 
-const DESKTOP = window.matchMedia("(min-width: 64rem)"); // = breakpoint "lg" de Tailwind
+const DESKTOP = window.matchMedia("(min-width: 48rem)"); // = breakpoint "md" de Tailwind
 
 const $ = (selector: string) => document.querySelector<HTMLElement>(selector);
 
