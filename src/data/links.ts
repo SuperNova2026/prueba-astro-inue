@@ -16,21 +16,4 @@ export const rvoeLink = { label: "Verificar RVOE", href: "#" } as const;
 
 export const blogIndexLink = { label: "Ver todo", href: "#" } as const;
 
-export interface NavItem {
-  label: string;
-  href: string;
-  external?: boolean;
-}
-
-export const primaryNav: readonly NavItem[] = [
-  { label: "Inglés", href: "#" },
-  { label: "Acerca de", href: "#" },
-  { label: "Campus en línea", href: "#", external: true },
-];
-
 export const contactLink = { label: "Contacto", href: "#contacto" } as const;
-export const studentPortalLink = { label: "Portal de alumnos", href: "#" } as const;
-
-export function linkAttrs({ external, href }: NavItem) {
-  return external && href !== "#" ? ({ target: "_blank", rel: "noopener" } as const) : {};
-}

@@ -13,14 +13,17 @@ interface Props {
 
 const { name, label, options, placeholder, required = false, class: className } = Astro.props;
 const errorId = `error-${name}`;
+const fieldId = `field-${name}`;
 ---
 
 <div data-field class={className}>
+  <label for={fieldId} class="sr-only">{label}</label>
   <div class="relative">
     <select
+      id={fieldId}
       name={name}
-      aria-label={label}
       aria-describedby={errorId}
+      aria-errormessage={errorId}
       required={required}
       class:list={[fieldClasses, "appearance-none pr-10 invalid:text-black/50 *:text-black"]}
     >

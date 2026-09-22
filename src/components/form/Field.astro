@@ -38,18 +38,21 @@ const {
 
 const errorId = `error-${name}`;
 const hintId = `hint-${name}`;
+const fieldId = `field-${name}`;
 const describedBy = hint ? `${hintId} ${errorId}` : errorId;
 ---
 
 <div data-field class:list={["group", className]}>
+  <label for={fieldId} class="sr-only">{label}</label>
   {
     multiline ? (
       <textarea
+        id={fieldId}
         name={name}
         rows={rows}
         placeholder={label}
-        aria-label={label}
         aria-describedby={describedBy}
+        aria-errormessage={errorId}
         required={required}
         maxlength={maxlength}
         minlength={minlength}
@@ -57,11 +60,12 @@ const describedBy = hint ? `${hintId} ${errorId}` : errorId;
       />
     ) : (
       <input
+        id={fieldId}
         type={type}
         name={name}
         placeholder={label}
-        aria-label={label}
         aria-describedby={describedBy}
+        aria-errormessage={errorId}
         autocomplete={autocomplete}
         required={required}
         pattern={pattern}

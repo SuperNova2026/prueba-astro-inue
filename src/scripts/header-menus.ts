@@ -18,6 +18,7 @@ function setMobile(open: boolean) {
   const { trigger, panel } = mobile();
   if (!trigger || !panel) return;
   trigger.setAttribute("aria-expanded", String(open));
+  trigger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
   panel.hidden = !open;
   document.documentElement.classList.toggle("overflow-hidden", open);
 }

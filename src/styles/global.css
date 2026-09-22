@@ -18,14 +18,14 @@
 	}
 }
 
-layer base {
+@layer base {
 	html {
 		scroll-padding-top: var(--header-height);
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
 		html {
-		scroll-behavior: ultra-smooth;
+			scroll-behavior: smooth;
 		}
 	}
 }

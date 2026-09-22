@@ -17,7 +17,7 @@ const bottomRow = [...partnersBottom, ...partnersBottom];
 			</p>
 			<div class="mt-12 mb-10 md:mt-28 md:mb-20">
 				<div class="relative ml-[calc(50%-50vw)] w-screen space-y-12 overflow-hidden">
-					<div class="flex w-max animate-[marquee_60s_linear_infinite] gap-20">
+					<div class="marquee flex w-max animate-[marquee_60s_linear_infinite] gap-20">
 					{topRow.map((logo, i) => (
 						<Image
 						src={logo.image}
@@ -28,7 +28,7 @@ const bottomRow = [...partnersBottom, ...partnersBottom];
 					))}
 					</div>
 					
-					<div class="flex w-max animate-[marquee_60s_linear_infinite] [animation-direction:reverse] gap-20">
+					<div class="marquee flex w-max animate-[marquee_60s_linear_infinite] [animation-direction:reverse] gap-20">
 					{bottomRow.map((logo, i) => (
 						<Image
 						src={logo.image}
@@ -48,5 +48,9 @@ const bottomRow = [...partnersBottom, ...partnersBottom];
 	@keyframes marquee {
 		from { transform: translateX(0); }
 		to { transform: translateX(-50%); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.marquee { animation: none; }
 	}
 </style>

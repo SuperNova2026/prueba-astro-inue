@@ -20,9 +20,9 @@ import { ChevronDown, Menu, X } from "@lucide/astro";
             <nav aria-label="Principal" class="hidden md:block">
                 <ul class="flex items-center gap-8 font-heading text-2xl">
                     <li data-programs-root>
-                        <button type="button" data-programs-trigger aria-expanded="false" aria-controls="programs-panel" class="group flex items-center gap-1 transition-colors hover:bg-yellow focus-visible:bg-yellow">
+                        <button type="button" data-programs-trigger aria-expanded="false" aria-controls="programs-panel" aria-haspopup="true" class="group flex items-center gap-1 transition-colors hover:bg-yellow focus-visible:bg-yellow">
                             Programas
-                            <ChevronDown width={14} height={14} class="stroke-2 transition-transform duration-300 group-aria-expanded:rotate-180" />
+                            <ChevronDown aria-hidden="true" width={14} height={14} class="stroke-2 transition-transform duration-300 group-aria-expanded:rotate-180" />
                         </button>
 
                         <ProgramsPanel />
@@ -56,9 +56,9 @@ import { ChevronDown, Menu, X } from "@lucide/astro";
                 ></span>
             </a>
 
-            <button type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú" class="group inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-black md:hidden">
-                <Menu width={22} height={22} class="stroke-2 group-aria-expanded:hidden" />
-                <X width={22} height={22} class="hidden stroke-2 group-aria-expanded:block" />
+            <button type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú" class="group inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-black md:hidden">
+                <Menu aria-hidden="true" width={22} height={22} class="stroke-2 group-aria-expanded:hidden" />
+                <X aria-hidden="true" width={22} height={22} class="hidden stroke-2 group-aria-expanded:block" />
             </button>
         </div>
     </div>

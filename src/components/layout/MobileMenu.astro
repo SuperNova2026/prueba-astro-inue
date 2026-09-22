@@ -11,7 +11,7 @@ import { ChevronDown, ExternalLink } from "@lucide/astro";
                 <details class="group">
                     <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
                         Programas
-                        <ChevronDown width={20} height={20} class="stroke-2 transition-transform group-open:rotate-180" />
+                        <ChevronDown aria-hidden="true" width={20} height={20} class="stroke-2 transition-transform group-open:rotate-180" />
                     </summary>
 
                     <div class="border-t border-black/15 font-sans">
@@ -42,7 +42,7 @@ import { ChevronDown, ExternalLink } from "@lucide/astro";
                 <li class="border-b border-black/15">
                     <a href={item.href} {...linkAttrs(item)} class="flex items-center justify-between gap-4 px-6 py-5">
                         {item.label}
-                        {item.external && <ExternalLink width={20} height={20} class="stroke-2" />}
+                        {item.external && <ExternalLink aria-hidden="true" width={20} height={20} class="stroke-2" />}
                     </a>
                 </li>
             ))}
