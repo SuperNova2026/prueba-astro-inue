@@ -43,7 +43,6 @@ src/
 
 **`scripts/`.** en vanilla TypeScript, sin framework de JS en el cliente: como Astro no envía JS por defecto, cada script se importa explícitamente donde se necesita (`Layout.astro` importa `scroll.ts`, el formulario importa `contact-form.ts` y `form-validation.ts`, etc.). Esto mantiene el bundle de cliente mínimo: solo se paga el costo de JS en las partes interactivas reales.
 
-
 ## Optimización y rendimiento
 
 - **Astro renderiza todo a HTML estático.** No hay ninguna "isla" de frameworks externos (React, Vue, etc.) en el proyecto: todo el comportamiento interactivo (menús, formulario, scroll) se resuelve con `<script>` de TypeScript plano, que Astro empaqueta y sirve como módulos con hash de caché. No hay runtime de framework que descargar.
@@ -79,4 +78,10 @@ npm run build
 # 4. Previsualizar la build de producción localmente
 npm run preview
 ```
+
+## Despliegue
+
+El sitio está desplegado en [Railway](https://railway.app/) como sitio estático, generado a partir de `npm run build`. No requiere variables de entorno ni servicios adicionales, ya que no hay backend ni conexiones externas.
+
+🔗 **Sitio desplegado:** [prueba-astro-inue-production.up.railway.app](https://prueba-astro-inue-production.up.railway.app)
 
