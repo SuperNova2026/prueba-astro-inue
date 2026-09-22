@@ -13,7 +13,7 @@ El formulario de contacto, por ejemplo, valida y "envía" el mensaje de forma si
 | **[Tailwind CSS v4](https://tailwindcss.com)** | Utilidades de estilo directamente en el markup, con @theme en global.css para centralizar tokens del diseño (color amarillo de marca, tipografías, alto del header). Se prefirió sobre CSS "a mano" por velocidad de iteración y consistencia entre componentes. |
 | **Google Fonts** | (Bebas Neue para títulos, Manrope para texto) cargadas con preconnect + media="print" onload="this.media='all'" para no bloquear el render inicial. |
 
-## Arquitectura y decisión de carpetas
+## Estructura y decisiónes de arquitectura
 
 **Cada carpeta agrupa archivos por su razón de cambio**.
 
@@ -43,7 +43,8 @@ src/
 
 **`scripts/`.** en vanilla TypeScript, sin framework de JS en el cliente: como Astro no envía JS por defecto, cada script se importa explícitamente donde se necesita (`Layout.astro` importa `scroll.ts`, el formulario importa `contact-form.ts` y `form-validation.ts`, etc.). Esto mantiene el bundle de cliente mínimo: solo se paga el costo de JS en las partes interactivas reales.
 
-## Optimización y rendimiento
+
+## Decisiones de Optimización y rendimiento
 
 - **Astro renderiza todo a HTML estático.** No hay ninguna "isla" de frameworks externos (React, Vue, etc.) en el proyecto: todo el comportamiento interactivo (menús, formulario, scroll) se resuelve con `<script>` de TypeScript plano, que Astro empaqueta y sirve como módulos con hash de caché. No hay runtime de framework que descargar.
 - **Imágenes optimizadas con `<Image />` de `astro:assets`.** Todas las imágenes en `data/blog.ts` y `data/partners.ts` se importan como archivos (no como rutas de texto), lo que permite a Astro:
@@ -57,31 +58,35 @@ src/
 - **Un solo cálculo por fotograma en scroll.** `footer-reveal.ts` usa `requestAnimationFrame` para agrupar los eventos de `scroll` (que se disparan decenas de veces por segundo) en un único cálculo por fotograma, evitando saturar el hilo principal.
 - **Respeta las preferencias de accesibilidad del sistema.** Tanto el scroll suavizado (Lenis) como las animaciones de desplazamiento del footer se desactivan si el usuario activó "reducir movimiento" (`prefers-reduced-motion: reduce`) en su sistema operativo.
 
-## Cómo ejecutar el proyecto localmente
+## Cómo ejecutar el proyecto
 
-**Requisitos:** Node.js 18 o superior.
+**Requisitos:** Node.js 20 o superior.
 
 ```bash
-# 1. Instalar dependencias
+# 1. Clonar el repositorio y entrar a la carpeta del proyecto
+git clone https://github.com/SuperNova2026/prueba-astro-inue.git
+cd prueba-astro-inue
+
+# 2. Instalar dependencias
 npm install
 
-# 2. Levantar el servidor de desarrollo (con recarga en caliente)
+# 3. Levantar el servidor de desarrollo
 npm run dev
 ```
 
 El sitio queda disponible en `http://localhost:4321`.
 
 ```bash
-# 3. Generar la build de producción (salida estática en dist/)
+# 4. Generar la build de producción
 npm run build
 
-# 4. Previsualizar la build de producción localmente
+# 5. Previsualizar la build de producción localmente
 npm run preview
 ```
 
 ## Despliegue
 
-El sitio está desplegado en [Railway](https://railway.app/) como sitio estático, generado a partir de `npm run build`. No requiere variables de entorno ni servicios adicionales, ya que no hay backend ni conexiones externas.
+El sitio está desplegado en [Railway](https://railway.app/) como sitio estático, generado a partir de `npm run build`.
 
 🔗 **Sitio desplegado:** [prueba-astro-inue-production.up.railway.app](https://prueba-astro-inue-production.up.railway.app)
 
